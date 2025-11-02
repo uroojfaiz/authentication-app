@@ -2,7 +2,7 @@
   
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, sendPasswordResetEmail as sendEmailResetPassword } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged , sendEmailResetPassword } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
 
   const firebaseConfig = {
@@ -41,7 +41,7 @@
     document.getElementById('login')?.addEventListener('click', ()=>{
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
-    createUserWithEmailAndPassword(auth, email, password)
+   signInWithEmailAndPassword(auth, email, password)
     .then(()=>{
       alert('Login successfully')
       window.location.href='welcome.html'
