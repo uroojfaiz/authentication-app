@@ -2,14 +2,14 @@
   
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged , sendEmailResetPassword } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged , sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyD4I1WjVOIxgdgH5tbrSNwnX6hpSbNtXos",
     authDomain: "autentication-app-b2d6e.firebaseapp.com",
     projectId: "autentication-app-b2d6e",
-    storageBucket: "autentication-app-b2d6e.firebasestorage.app",
+    storageBucket: "autentication-app-b2d6e.appspot.com",
     messagingSenderId: "740668032551",
     appId: "1:740668032551:web:2237b6707323a7d14d3002",
     measurementId: "G-S6P5KZY7VZ"
@@ -76,19 +76,22 @@
     })
   })
   // reset password code
-  document.getElementById('reset-btn')?.addEventListener('click', ()=>{
-    const email = document.getElementById('reset-email').value;
-    if(email){
-      sendEmailResetPassword(auth, email)
-      .then(()=>{
+  document.getElementById('reset-btn')?.addEventListener('click', () => {
+  const email = document.getElementById('reset-email').value;
+  if (email) {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
         alert('Password reset email sent!')
-        window.location.href='login.html'
+        window.location.href = 'login.html'
       })
-      .catch((error)=>{
+      .catch((error) => {
         alert(error.message)
       })
-    
-    } })
+  } else {
+    alert("pehle email likho bhai.")
+  }
+});
+
 
 
   //show user email
